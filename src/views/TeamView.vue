@@ -2,6 +2,6 @@
 
 <template>
   <div>
-    <h1>HomeView</h1>
+    <h1>TeamView</h1>
   </div>
 </template>

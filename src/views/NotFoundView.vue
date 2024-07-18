@@ -2,6 +2,6 @@
 
 <template>
   <div>
-    <h1>HomeView</h1>
+    <h1>NotFoundView</h1>
   </div>
 </template>

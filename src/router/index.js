@@ -6,16 +6,67 @@ const router = createRouter({
   routes: [
     {
       path: '/',
+      alias: ['/home', '/index', '/main'],
+      meta: {
+        requiresLogin: false,
+        requiresActivatedAccount: false
+      },
       name: 'home',
       component: HomeView
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      path: '/auth',
+      name: 'auth',
+      meta: {
+        requiresLogin: false,
+        requiresActivatedAccount: false
+      },
+      component: () => import('../views/AuthView.vue')
+    },
+    {
+      path: '/challenge',
+      name: 'chanllnege',
+      meta: {
+        requiresLogin: true,
+        requiresActivatedAccount: true
+      },
+      component: () => import('../views/ChallengeView.vue')
+    },
+    {
+      path: '/rank',
+      name: 'rank',
+      meta: {
+        requiresLogin: true,
+        requiresActivatedAccount: true
+      },
+      component: () => import('../views/RankView.vue')
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      meta: {
+        requiresLogin: true,
+        requiresActivatedAccount: false
+      },
+      component: () => import('../views/ProfileView.vue')
+    },
+    {
+      path: '/team',
+      name: 'team',
+      meta: {
+        requiresLogin: true,
+        requiresActivatedAccount: true
+      },
+      component: () => import('../views/TeamView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: '404',
+      meta: {
+        requiresLogin: false,
+        requiresActivatedAccount: false
+      },
+      component: () => import('../views/NotFoundView.vue')
     }
   ]
 })
