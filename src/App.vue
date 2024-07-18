@@ -1,6 +1,20 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { useCounterStore } from './stores/counter'
 import HelloWorld from './components/HelloWorld.vue'
+// import { axios } from './utils/axios'
+
+// setAuthorizationHeader('bupt')
+// axios({
+//   method: 'get',
+//   url: '/login',
+//   params: {
+//     username: 'admin',
+//     password: 'password'
+//   }
+// })
+const store = useCounterStore()
+console.log(document.cookie)
 </script>
 
 <template>
@@ -17,7 +31,15 @@ import HelloWorld from './components/HelloWorld.vue'
     </div>
   </header>
 
-  <RouterView />
+  <RouterView v-slot="{ Component }">
+    <Transition>
+      <KeepAlive>
+        <component :is="Component" />
+      </KeepAlive>
+    </Transition>
+  </RouterView>
+  <p>{{ store.count }}</p>
+  <button @click="store.increment()">Increment</button>
 </template>
 
 <style scoped>
