@@ -1,42 +1,22 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import { useCounterStore } from './stores/counter'
-// import { axios } from './utils/axios'
-
-// setAuthorizationHeader('bupt')
-// axios({
-//   method: 'get',
-//   url: '/login',
-//   params: {
-//     username: 'admin',
-//     password: 'password'
-//   }
-// })
-const store = useCounterStore()
-console.log(document.cookie)
+import { RouterView } from 'vue-router'
+import { ElContainer, ElFooter } from 'element-plus'
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView v-slot="{ Component }">
-    <Transition>
-      <KeepAlive>
-        <component :is="Component" />
-      </KeepAlive>
-    </Transition>
-  </RouterView>
-  <p>{{ store.count }}</p>
-  <button @click="store.increment()">Increment</button>
+  <ElContainer>
+    <ElHeader>header</ElHeader>
+    <ElContainer>
+      <RouterView v-slot="{ Component }">
+        <Transition>
+          <KeepAlive>
+            <component :is="Component" />
+          </KeepAlive>
+        </Transition>
+      </RouterView>
+    </ElContainer>
+    <ElFooter>footer</ElFooter>
+  </ElContainer>
 </template>
 
 <style scoped>
